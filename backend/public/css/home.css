@@ -1,0 +1,501 @@
+
+/* common */
+
+#app{
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+.container{
+    position: relative;
+}
+/* nav-item */
+.nav_container{
+    position: relative;
+    height: 60px;
+}
+#home_icon{
+    position: absolute;
+    top: 6px;
+    right: 86px;
+    font-size: 23px;
+    color: gray;
+}
+#create_icon{
+    position: absolute;
+    top: 6px;
+    right: 48px;
+    font-size: 23px;
+    color: gray;
+}
+#nav_user_avatar{
+    height: 36px;
+    width: 36px;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+#nav_user_icon{
+    font-size: 23px;
+    position: absolute;
+    top: 12px;
+    right: 6px;
+}
+#nav_drop{
+    position: absolute;
+    right: 50px;
+}
+
+/* search icon */
+#nav_search_icon{
+    margin-left: 6px;
+    margin-top: 13px;
+    font-size: 16px;
+    color: #4ab6f6;
+}
+#nav_search{
+    position: absolute;
+    left: 50px;
+    top: 10px;
+}
+#nav_search_box{
+    width: 170px;
+    height: 30px;
+}
+
+/* post */
+#time{
+    font-size: 6px;
+    margin-left: 20px;
+}
+#post{
+    width: 100%;
+    padding: 0;
+    position: absolute;
+}
+#user_icon{
+    font-size: 40px;
+}
+#user_img{
+    height: 40px;
+    width: 40px;
+}
+#post_description{
+    margin-left: 70px;
+    font-size: 13px;
+}
+#post_header{
+    position: relative;
+}
+#post_header a{
+    font-size: 14px;
+    margin-top: px;
+}
+#post_header p{
+    font-size: 10px;
+}
+#post_detail{
+    margin-top: 10px;
+}
+#follow{
+    font-size: 8px;
+}
+
+/* heart comment icon */
+#home_post_footer{
+    position: relative;
+}
+#heart{
+    font-size: 19px;
+    color: gray;
+    margin-left: 28px;
+    margin-top: 4px;
+}
+#comment_icon{
+    font-size: 19px;
+    color: gray;
+    margin-left: 38px;
+    margin-top: 4px;
+}
+#liked_heart{
+    font-size: 19px;
+    margin-left: 28px;
+    margin-top: 4px;
+}
+#comment_num{
+    position: absolute;
+    left: 133px;
+}
+#suggestion{
+    width: 200px;
+    right: 100px;
+}
+#search {
+    position: relative;
+    width: 100%;
+}
+.form-element {
+    padding: .5rem .5rem .5rem 2rem;
+    width: 100%;
+    outline: 0;
+    border: 1px solid #cdcdcd;
+    border-radius: .2rem;
+    background-color: transparent;
+    color: #495057;
+    font-size: .875rem;
+    box-sizing: border-box;
+    appearance: none;
+    line-height: 1.4rem;
+}
+.form-element+i {
+    position: absolute;
+    top: 50%;
+    left: .5rem;
+    transform: translateY(-50%);
+    content: '';
+    transition: .3s;
+}
+.form-element:focus {
+    border: 1px solid #4ab6f6;
+    box-shadow: 0 0 3px #4ab6f6;
+}
+.form-element:focus+i {
+    color: #4ab6f6;
+}
+/* modal area */
+#modal_user_img{
+    height: 36px;
+    width: 36px;
+}
+#modal_user_icon{
+    font-size: 36px;
+}
+/* tablet */
+@media (min-width:768px) and (max-width:1020px) {
+/* nav-item */
+#user_name{
+    font-size: 16px;
+}
+.comment{
+    font-size: 16px;
+}
+#user_icon{
+    font-size: 60px;
+}
+#nav_search_icon{
+    margin-left: 24px;
+    margin-top: 10px;
+    font-size: 19x;
+    color: #4ab6f6;
+}
+#user_img{
+    height: 60px;
+    width: 60px;
+}
+/* post */
+#post{
+    width: 600px;
+    position: absolute;
+    left: 70px ;
+}
+#post_description{
+    margin-left: 80px;
+}
+#post_header a{
+    font-size: 17px;
+}
+#post_header p{
+    font-size: 12px;
+}
+/* comment-heart icon */
+#heart{
+    font-size: 20px;
+    color: gray;
+    margin-left: 42px;
+}
+#comment_icon{
+    font-size: 20px;
+    color: gray;
+    margin-left: 40px;
+}
+#comment_num{
+    position: absolute;
+    left: 174px;
+}
+#liked_heart{
+    font-size: 20px;
+    position: absolute;
+    left: 20px;
+}
+/* suggestion icon */
+#sug_icon{
+    font-size: 36px;
+}
+#sug_user_img{
+    height: 36px;
+    width: 36px;
+}
+#sug_icon{
+    font-size: 30px;
+}
+/* modal area */
+#modal_user_img{
+    height: 36px;
+    width: 36px;
+}
+#modal_user_icon{
+    font-size: 36px;
+}
+
+#nav_search_icon{
+    font-size: 20px;
+}
+#nav_search{
+    left: 90px;
+    top: 8px;
+}
+#nav_search_box{
+    width: 300px;
+}
+}
+
+/* pc */
+@media(min-width: 1020px) {
+    #user_name{
+        font-size: 16px;
+    }
+    .comment{
+        font-size: 16px;
+    }
+    #post{
+        width: 690px;
+        position: absolute;
+        left: 140px ;
+    }
+    #suggestion{
+        width: 280px;
+        position: absolute;
+        right: 160px;
+        margin: 0;
+    }
+    #user_icon{
+        font-size: 60px;
+    }
+    #user_img{
+        height: 60px;
+        width: 60px;
+    }
+    #post_description{
+        margin-left: 120px;
+    }
+/* comment heart icon */
+    #heart{
+        font-size: 1.5rem;
+        color: gray;
+        position: absolute;
+        left: 60px;
+    }
+    #liked_heart{
+        font-size: 1.5rem;
+        position: absolute;
+        left: 20px;
+    }
+    #comment_icon{
+        font-size: 1.5rem;
+        color: gray;
+        margin-left: 34px;
+    }
+    #comment_num{
+        position: absolute;
+        left: 180px;
+    }
+    #post_header a{
+        font-size: 17px;
+    }
+    #post_header p{
+        font-size: 12px;
+    }
+
+/* suggestion icon */
+    #sug_icon{
+        font-size: 36px;
+    }
+    #sug_user_img{
+        height: 36px;
+        width: 36px;
+    }
+    #sug_icon{
+        font-size: 30px;
+    }
+    #search_icon{
+        position: absolute;
+        top: 15px;
+    }
+/* nav-item */
+    #nav_user_avatar{
+        height: 36px;
+        width: 36px;
+        position: absolute;
+        top: 6px;
+        right: 1px;
+    }
+    #nav_user_icon{
+        font-size: 23px;
+        position: absolute;
+        top: 12px;
+        right: 6px;
+    }
+/* modal area */
+    #modal_user_img{
+        height: 36px;
+        width: 36px;
+    }
+    #modal_user_icon{
+        font-size: 36px;
+    }
+}
+/* display */
+@media(min-width:1500px){
+#user_post{
+    width: 700px;
+}
+#user_icon{
+    font-size: 60px;
+}
+#user_img{
+    height: 60px;
+    width: 60px;
+}
+#user_name{
+    font-size: 20px;
+}
+.comment{
+    font-size: 16px;
+}
+#home_icon{
+    font-size: 2em;
+}
+#create_icon{
+    font-size: 2em;
+}
+#nav_container{
+    margin-right: 8px;
+}
+#nav_user_img{
+    height: 43px;
+    width: 43px;
+}
+#suggestion{
+    width: 300px;
+    right: 18px;
+    margin: 0;
+}
+#suggestion p{
+    font-size: 18px;
+}
+/* post */
+#post{
+    width: 760px;
+    left: 90px ;
+    padding: 0;
+}
+#post_header a{
+    font-size: 18px;
+    margin-top: px;
+}
+#post_header p{
+    font-size: 12px;
+}
+#post_description{
+    margin-left: 130px;
+    font-size: 14px;
+}
+/* comment heart icon */
+#heart{
+    font-size: 1.5rem;
+    color: gray;
+    margin-left: 6px;
+}
+#liked_heart{
+    font-size: 1.5rem;
+    margin-left: 6px;
+}
+#comment_icon{
+    font-size: 1.5rem;
+    color: gray;
+    margin-left: 40px;
+    margin-top: 2px;
+}
+#comment_num{
+    margin-left: 30px;
+    margin-top: 3px;
+}
+#num{
+    margin-top: 3px;
+}
+#user_icon{
+    font-size: 60px;
+}
+
+/* nav-item */
+.nav_container{
+    position: relative;
+    height: 60px;
+}
+#home_icon{
+    position: absolute;
+    top: 6px;
+    right: 125px;
+    font-size: 28px;
+    color: gray;
+}
+#create_icon{
+    position: absolute;
+    top: 6px;
+    right: 70px;
+    font-size: 28px;
+    color: gray;
+}
+#nav_user_avatar{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 6px;
+    right: 5px;
+}
+#nav_user_icon{
+    font-size: 32px;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+}
+/* suggestion icon */
+#sug_icon{
+    font-size: 36px;
+}
+#sug_user_img{
+    height: 36px;
+    width: 36px;
+}
+#sug_icon{
+    font-size: 30px;
+}
+/* modal area */
+#modal_user_img{
+    height: 36px;
+    width: 36px;
+}
+#modal_user_icon{
+    font-size: 36px;
+}
+/* create page */
+.create_container{
+    margin-top: 120px;
+}
+
+
+
+
+
+
+}

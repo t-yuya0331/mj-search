@@ -1,0 +1,43 @@
+/* common */
+
+#show_post{
+    width: 600px;
+}
+
+
+/* tablet */
+@media (min-width:768px) and (max-width:1020px) {
+    #user_name{
+        font-size: 20px;
+    }
+    .comment{
+        font-size: 16px;
+    }
+
+}
+/* pc */
+@media(min-width: 1020px) {
+    #profile_user_avatar{
+        height: 60px;
+        width: 60px;
+    }
+    #profile_user_icon{
+        height: 60px;
+        width: 60px;
+    }
+
+}
+/* display */
+@media(min-width:1500px){
+    #profile_user_avatar{
+        height: 120px;
+        width: 120px;
+    }
+    #profile_user_icon{
+        height: 120px;
+        width: 120px;
+    }
+
+}
+
+

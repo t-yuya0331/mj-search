@@ -1,0 +1,9 @@
+{
+    "require": {
+        "laravel/ui": "^4.1",
+        "laravel/scout": "^9.8",
+        "algolia/algoliasearch-client-php": "^3.3",
+        "pusher/pusher-php-server": "^7.2.2",
+        "predis/predis": "^2.1"
+    }
+}
