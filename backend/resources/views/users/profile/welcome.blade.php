@@ -1,3 +1,4 @@
+git rm -r --cached .
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
