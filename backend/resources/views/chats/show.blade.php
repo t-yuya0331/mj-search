@@ -27,7 +27,6 @@
     <div class="">
         <form id="chat_form" >
             @csrf
-                {{-- <input type="text" name="message" id="message"> --}}
                 <textarea name="message" id="message"></textarea>
                 <input type="hidden" name="receiver" id="receiver" value="{{ $chat_user->id }}">
                 <input type="hidden" name="sender" id="sender" value="{{ Auth::user()->id }}">

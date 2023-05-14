@@ -4,39 +4,7 @@
 <div class="container p-0">
     <div class="row w-100 m-0">
         <div class="col-7 mt-5" id="post">
-            {{-- <div id="map" style="height: 400px;"></div>
-                <!-- Google Maps API のスクリプトを読み込む -->
-                <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyCl4NL0Vl0MLYjECO2nLmwZvlcR3DZm2lE&libraries=places&callback=initMap" async defer>
-                </script>
-                <script>
-                    var map;
-                    var marker;
-                    function initMap() {
-                        if (!navigator.geolocation) {
-                            alert('Geolocation APIに対応していません');
-                            return false;
-                        }
-
-                        // 現在地の取得
-                        navigator.geolocation.getCurrentPosition(function(position) {
-                            // 緯度経度の取得
-                            latLng = new google.maps.LatLng(position.coords.latitude,   position.coords.              longitude);
-
-                            map = new google.maps.Map(document.getElementById('map'), {
-                                center: latLng,
-                                zoom: 17
-                            });
-
-                            // 現在地マーク
-                            marker = new google.maps.Marker({
-                                position: latLng,
-                                map: map
-                            });
-                        }, function() {
-                            alert('位置情報取得に失敗しました');
-                        });
-                    }
-                </script> --}}
+            
             @if($all_posts->isNotEmpty())
                 @foreach ($all_posts as $post)
                     <div class="card mb-4 bg-dark text-white border">
