@@ -36,22 +36,5 @@ services:
     depends_on:
       - db
 
-  # echo-server:
-  #   image: broadcast-echo-server
-  #   build: ./infra/echo-server
-  #   ports:
-  #   - "6001:6001"
-  #   command: laravel-echo-server start
-  #   volumes:
-  #   - ./backend:/work
-  #   working_dir: /work
-
-  # redis:
-  #   image: redis:latest
-  #   container_name: redis
-  #   ports:
-  #     - 6379:6379
-  #   volumes:
-  #     - "./infra/redis/data:/data"
 volumes:
   db-store:
