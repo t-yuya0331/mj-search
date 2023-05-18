@@ -50,7 +50,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description'   => 'required|min:1|max:1000',
+            'description'   => 'max:200',
             'number'        => 'required|min:1|max:3',
             'category'      => 'required',
             'date'          => 'required',
@@ -58,11 +58,13 @@ class PostController extends Controller
 
         $this->post->user_id = Auth::user()->id;
         $this->post->target = $request->target;
-        $this->post->description = $request->description;
         $this->post->date = $request->date;
         $this->post->time = $request->time;
         $this->post->number = $request->number;
         $this->post->location = $request->location;
+        if($request->description):
+            $this->post->description = $request->description;
+        endif;
         $this->post->save();
 
         // category

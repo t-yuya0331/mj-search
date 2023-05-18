@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('target')
                     ->comment('1 beginner 2 intermediate 3 advanced 4 anyone')
                     ->nullable();
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->date('date')->nullable();
             $table->time('time');
             $table->string('number')->nullable();
