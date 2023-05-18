@@ -6,7 +6,7 @@
 <div class="create_container">
     <div class="create_post w-50 mx-auto " >
         @if(!Auth::user()->checkUserHasPost())
-            <h3 class="text-center">初めての投稿をしよう！</h3>
+            <h3 class="text-center">メンバー募集をしよう！</h3>
         @endif
         <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -34,8 +34,6 @@
                     <div class="rule">
                         <p class="rule mb-0">※赤ありは赤ドラありのルール</p>
                         <p class="rule mb-0">※チップは主に一発・裏ドラ・赤ドラ・役満に付随するボーナス点としてチップを使用するルール</p>
-                        <p class="rule mb-0">※ありありは鳴いて断么和了があり、後付け和了がありのルール</p>
-                        <p class="rule mb-0">※ありなしは鳴いて断么和了があり、後付け和了がなしのルール</p>
                     </div>
                 </div>
             </div>
