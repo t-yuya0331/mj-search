@@ -23,47 +23,37 @@ class Post extends Model
         'status'
     ];
 
-    protected $appends = ['number_text'];
-
     // Algoria search function
     public function toSearchableArray(){
         $array = $this->toArray();
-        $array['target_text'] = $this->getTargetTextAttribute();
-        $array['number_text'] = $this->getNumberTextAttribute();
+        $array['number'] = $this->getNumberLabelAttribute();
+        $array['target'] = $this->getTargetLabelAttribute();
         unset($array['image']);
         unset($array['updated_at']);
+        unset($array['user_id']);
 
         return $array;
     }
-    public function searchableAs(){
-        return 'posts_index';
-    }
-    public function getTargetTextAttribute(){
-        switch ($this->target) {
-            case 1:
-                return '初心者';
-            case 2:
-                return '中級者';
-            case 3:
-                return '上級者';
-            case 4:
-                return '誰でも歓迎';
-            default:
-                return '';
-        }
-    }
 
-    public function getNumberTextAttribute(){
-        switch ($this->number){
-            case 1:
-                return '募集人数 1';
-            case 2:
-                return '募集人数 2';
-            case 3:
-                return '募集人数 3';
-            default:
-                return '';
-        }
+    public function getTargetLabelAttribute(){
+        $targetLabels = [
+            1 => '初心者',
+            2 => '中級者',
+            3 => '上級者',
+            4 => '誰でも歓迎',
+        ];
+
+        return $targetLabels[$this->target] ?? '';
+}
+
+    public function getNumberLabelAttribute(){
+        $numberLabels = [
+            1 => '募集人数1',
+            2 => '募集人数2',
+            3 => '募集人数3',
+        ];
+
+        return $numberLabels[$this->number] ?? '';
     }
 
     public function user(){

@@ -16,35 +16,32 @@
             @if($search_users->isNotEmpty())
                 <div class="card-body">
                     <div class="" id="search_user">
-                        <div class="text-start">
-                            <h3>People</h3>
-                        </div>
-                            @foreach($search_users as $user)
-                                @if($user->id !== Auth::user()->id)
-                                    <div class="row">
-                                        <div class="col-auto">
-                                            @if($user->avatar)
-                                            <a href="{{ route('profile.show', $user->id) }}">
-                                                <img src="data:image/png;base64,{{ $user->avatar }}" alt="{{  $user->avatar }}" class="rounded-circle nav-avatar" id="search_user_avatar">
-                                            </a>
-                                            @else
-                                                <i class="fas fa-user-circle" id="search_user_icon"></i>
-                                            @endif
-                                        </div>
-                                        <div class="col-auto fw-bold mt-1">
-                                            {{ $user->name }}
-                                        </div>
-                                        <div class="col">
-                                            <form action="{{ route('follow.store', $user->id) }}" method="post">
-                                                @csrf
-                                                <button type="submit" class="btn    btn-none   text-primary ">
-                                                    Follow
-                                                </button>
-                                            </form>
-                                        </div>
+                        @foreach($search_users as $user)
+                            @if($user->id !== Auth::user()->id)
+                                <div class="row">
+                                    <div class="col-auto">
+                                        @if($user->avatar)
+                                        <a href="{{ route('profile.show', $user->id) }}">
+                                            <img src="data:image/png;base64,{{ $user->avatar }}" alt="{{  $user->avatar }}" class="rounded-circle nav-avatar" id="search_user_avatar">
+                                        </a>
+                                        @else
+                                            <i class="fas fa-user-circle" id="search_user_icon"></i>
+                                        @endif
                                     </div>
-                                @endif
-                            @endforeach
+                                    <div class="col-auto fw-bold mt-1">
+                                        {{ $user->name }}
+                                    </div>
+                                    <div class="col">
+                                        <form action="{{ route('follow.store', $user->id) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn    btn-none   text-primary ">
+                                                Follow
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             @endif
@@ -119,7 +116,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer" id="search_post_footer">
+                                {{-- <div class="card-footer" id="search_post_footer">
                                     <hr class="m-0">
                                     <div class="row">
                                         @if ($post->isLiked() )
@@ -154,7 +151,7 @@
                                             <p class="text-secondary" id="search_comment_num">&nbsp;{{ $post->comments->count() }}<p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             @endif
                         @endforeach

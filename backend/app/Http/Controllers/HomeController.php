@@ -44,15 +44,13 @@ class HomeController extends Controller
 
 
     public function search(Request $request){
-        $search_users = User::search($request->search)->get();
-        $search_posts = Post::search($request->search)->get();
         $keyword = $request->input('search');
+        $search_users = User::search($keyword)->get();
+        $search_posts = Post::search($keyword)->get();
 
 
         return view('search.index')->with('search_users', $search_users)
                                     ->with('search_posts', $search_posts)
                                     ->with('keyword', $keyword);
     }
-
-
 }

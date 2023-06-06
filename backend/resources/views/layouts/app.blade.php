@@ -55,7 +55,7 @@
                         <div class="search-box" id="nav_search">
                             <form action="{{ route('search') }}" method="get">
                                 @csrf
-                                <input type="text" name="search" class="form-element " placeholder="Keyword" id="nav_search_box" required>
+                                <input type="text" name="search" class="form-element " placeholder="キーワード検索" id="nav_search_box" required>
                                 <button class="btn btn-sm btn-primary">検索</button>
                             </form>
                         </div>
