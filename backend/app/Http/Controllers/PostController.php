@@ -28,7 +28,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description'   => 'max:200',
+            'description'   => 'max:500',
             'number'        => 'required|min:1|max:3',
             'category'      => 'required',
             'date'          => 'required',
@@ -83,30 +83,33 @@ class PostController extends Controller
     public function update(Request $request,$id)
     {
         $request->validate([
-            'image'         => 'required|mimes:jpg, jpeg, png, gif|max:1048',
-            'description'   => 'required|min:1|max:1000',
-            'category'      => 'required|array|between:1,3'
+            'description'   => 'max:500',
+            'number'        => 'required|min:1|max:3',
+            'date'          => 'required',
         ]);
 
         $post = $this->post->findOrFail($id);
-        $post->description = $request->description;
 
-        if($request->image):
-            $this->deleteImage($post->image);
-            $post->image = $this->saveImage($request);
+        $post->target = $request->target;
+        $post->date = $request->date;
+        $post->time = $request->time;
+        $post->number = $request->number;
+        $post->location = $request->location;
+        if($request->description):
+            $post->description = $request->description;
         endif;
 
         $post->save();
 
         $post->categoryPost()->delete();
-
+        $category_post = [];
         foreach($request->category as $category_id):
             $category_post[] = ['category_id' => $category_id];
         endforeach;
 
         $post->categoryPost()->createMany($category_post);
 
-            return redirect()->route('post.show',$id);
+            return redirect()->back();
     }
 
     public function destroy($id)

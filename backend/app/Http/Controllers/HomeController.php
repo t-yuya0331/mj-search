@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Chat;
+use App\Models\Category;
 
 
 class HomeController extends Controller
@@ -19,11 +20,12 @@ class HomeController extends Controller
     private $post;
     private $user;
 
-    public function __construct(Post $post, User $user)
+    public function __construct(Post $post, User $user,Category $category)
     {
 
         $this->post = $post;
         $this->user = $user;
+        $this->category = $category;
     }
 
     /**
@@ -34,12 +36,13 @@ class HomeController extends Controller
     public function index()
     {
         $users = $this->user->all();
-
         $all_posts = $this->post->latest()->get();
+        $all_categories = $this->category->all();
 
         return view('users.home')
                 ->with('all_posts', $all_posts)
-                ->with('users', $users);
+                ->with('users', $users)
+                ->with('all_categories', $all_categories);
     }
 
 
