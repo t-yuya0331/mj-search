@@ -78,15 +78,10 @@
                                 <i class="fa-solid fa-circle-user nav-icon" id="nav_user_icon"></i>
                             @endif
                         </button>
-
                         <div class="dropdown-menu dropdown-menu-end mt-5" aria-labelledby="navbarDropdown" id="nav_drop">
                             <!-- profile -->
                                 <a href="{{ route('profile.show', Auth::user()->id) }}"     class="dropdown-item">
                                     <i class="fa-solid fa-circle-user">Profile</i>
-                                </a>
-                            {{-- record --}}
-                                <a href="{{ route('user_post.create') }}" class="dropdown-item">
-                                    <i class="fa-solid fa-album">記録</i>
                                 </a>
                             <!-- logout -->
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -94,7 +89,6 @@
                                             document.getElementById('logout-form').submit();">
                                 <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
                             </a>
-
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"     class="d-none">
                                 @csrf
                             </form>
