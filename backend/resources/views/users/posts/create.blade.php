@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="create_container">
-    <div class="create_post w-50 mx-auto " >
+    <div class="create_post w-50 mx-auto" >
         @if(!Auth::user()->checkUserHasPost())
             <h3 class="text-center">メンバー募集をしよう！</h3>
         @endif
@@ -32,8 +32,8 @@
                 </p>
                 <div class="collapse" id="collapseRule">
                     <div class="rule">
-                        <p class="rule mb-0">※赤ありは赤ドラありのルール</p>
-                        <p class="rule mb-0">※チップは主に一発・裏ドラ・赤ドラ・役満に付随するボーナス点としてチップを使用するルール</p>
+                        <p class="rule mb-0">赤あり:&nbsp; 赤ドラありのルール</p>
+                        <p class="rule mb-0">チップ:&nbsp; 主に一発・裏ドラ・赤ドラ・役満に付随するボーナス点としてチップを使用するルール</p>
                     </div>
                 </div>
             </div>
@@ -43,13 +43,13 @@
                         <label for="date" class="form-label d-block fw-bold">
                             <span class="text-muted fw-normal">日付を選択してください</span>
                         </label>
-                        <input type="date" name="date">
+                        <input type="date" name="date" min="{{ $today }}">
                     </div>
                     <div class="col-auto">
                         <label for="time" class="form-label d-block fw-bold">
                             <span class="text-muted fw-normal">時間を選択してください</span>
                         </label>
-                        <input type="time" name="time">
+                        <input type="time" name="time" min="{{ $time }}" step="600">
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <label for="location" class="form-label d-block fw-bold">
                     <span class="text-muted fw-normal">場所</span>
                 </label>
-                <input type="text" name="location" placeholder="お店の住所等">
+                <input type="text" name="location" placeholder="お店の名前や住所等">
             </div>
             <div class="mb-3">
                 <label for="number" class="form-label d-block fw-bold">
@@ -65,7 +65,6 @@
                 </label>
                 <input type="number" name="number" max="3" min="1">
             </div>
-
             <div class="row mb-3">
                 <div class="form-group">
                     <p class="control-label">募集対象</p>
@@ -98,9 +97,9 @@
                 </p>
                 <div class="collapse" id="collapseTarget">
                     <div class="target">
-                        <p class="rule mb-0">※初級:麻雀の基本ルールを覚えている方</p>
-                        <p class="rule mb-0">※中級:基本ルールと点数計算を覚えている方</p>
-                        <p class="rule mb-0">※上級:捨て牌、安全牌等を読み攻め時と引き時を実行に移せる方</p>
+                        <p class="rule mb-0">初級:&nbsp; 麻雀の基本ルールを覚えている方</p>
+                        <p class="rule mb-0">中級:&nbsp; 基本ルールと点数計算を覚えている方</p>
+                        <p class="rule mb-0">上級:&nbsp; 捨て牌、安全牌等を読み攻め時と引き時を実行に移せる方</p>
                     </div>
                 </div>
             </div>
@@ -111,7 +110,6 @@
                     <p class="text-danger small">{{ $message }}</p>
                 @enderror
             </div>
-
             <div class="button text-center">
                 <button type="submit" class="btn btn-primary w-50">Post</button>
             </div>
