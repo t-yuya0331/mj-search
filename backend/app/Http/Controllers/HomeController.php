@@ -6,37 +6,37 @@ use App\Events\MessageReceived;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\Chat;
+use Carbon\Carbon;
 use App\Models\Category;
 
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     private $post;
     private $user;
 
-    public function __construct(Post $post, User $user,Category $category)
-    {
+    public function __construct(Post $post, User $user,Category $category){
 
         $this->post = $post;
         $this->user = $user;
         $this->category = $category;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
+    public function index(){
+        // check the date and time are past or not
+        $currentDateTime = Carbon::now('Asia/Tokyo');
+        Post::where('date', '<', $currentDateTime->format('Y-m-d'))
+            ->orWhere(function ($query) use ($currentDateTime) {
+                $query->where('date', '=', $currentDateTime->format('Y-m-d'))
+                    ->where('time', '<', $currentDateTime->format('H:i:s'));
+            })
+            ->update(['role_id' => 2]);
+
+         //retrieve posts , users and categories data
         $users = $this->user->all();
-        $all_posts = $this->post->latest()->get();
+        $all_posts = Post::where('role_id', 1)
+                    ->where('status', 1)
+                    ->latest()->get();
         $all_categories = $this->category->all();
 
         return view('users.home')
@@ -50,7 +50,6 @@ class HomeController extends Controller
         $keyword = $request->input('search');
         $search_users = User::search($keyword)->get();
         $search_posts = Post::search($keyword)->get();
-
 
         return view('search.index')->with('search_users', $search_users)
                                     ->with('search_posts', $search_posts)

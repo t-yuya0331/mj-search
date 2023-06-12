@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Nice;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -19,19 +19,24 @@ class PostController extends Controller
         $this->category = $category;
     }
 
-    public function create()
-    {
+    public function create(){
         $all_categories = $this->category->all();
-        return view('users.posts.create')->with('all_categories',$all_categories);
+        $today = Carbon::now('Asia/Tokyo')->format('Y-m-d');
+        $time = Carbon::now('Asia/Tokyo')->format('H:i');
+
+        return view('users.posts.create')
+                ->with('all_categories',$all_categories)
+                ->with('today', $today)
+                ->with('time', $time);
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $request->validate([
             'description'   => 'max:500',
             'number'        => 'required|min:1|max:3',
             'category'      => 'required',
             'date'          => 'required',
+            'time'          => 'required',
         ]);
 
         $this->post->user_id = Auth::user()->id;
@@ -61,8 +66,7 @@ class PostController extends Controller
         return view('users.posts.show')->with('post', $post);
     }
 
-    public function edit($id)
-    {
+    public function edit($id){
         $post = $this->post->findOrFail($id);
 
         if(Auth::user()->id !== $post->user->id):
@@ -80,8 +84,7 @@ class PostController extends Controller
                 ->with('selected_categories');
     }
 
-    public function update(Request $request,$id)
-    {
+    public function update(Request $request,$id){
         $request->validate([
             'description'   => 'max:500',
             'number'        => 'required|min:1|max:3',
@@ -112,8 +115,7 @@ class PostController extends Controller
             return redirect()->back();
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
         $post = $this->post->findOrFail($id);
         $this->deleteImage($post->image);
         $this->post->destroy($id);
@@ -128,7 +130,7 @@ class PostController extends Controller
     public function changePostStatus($id){
         $post = $this->post->findOrFail($id);
         $post->update([
-            'role_id' => 2
+            'status' => 2
         ]);
         return redirect()->back();
     }
