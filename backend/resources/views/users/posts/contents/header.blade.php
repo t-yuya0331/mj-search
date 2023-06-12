@@ -69,7 +69,7 @@
                                                     <label for="date" class="form-label d-block fw-bold">
                                                         <span class="text-muted fw-normal">日付を選択してください</span>
                                                     </label>
-                                                    <input type="date" name="date" value="{{ $post->date }}">
+                                                    <input type="date" name="date" value="{{ $post->date }}" min="{{ $today }}">
                                                 </div>
                                                 <div class="col-auto">
                                                     <label for="time" class="form-label d-block fw-bold">

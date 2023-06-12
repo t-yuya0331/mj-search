@@ -49,7 +49,7 @@
                         <label for="time" class="form-label d-block fw-bold">
                             <span class="text-muted fw-normal">時間を選択してください</span>
                         </label>
-                        <input type="time" name="time" min="{{ $time }}" step="600">
+                        <input type="time" name="time">
                     </div>
                 </div>
             </div>

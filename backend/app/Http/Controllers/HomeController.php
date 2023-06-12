@@ -38,11 +38,15 @@ class HomeController extends Controller
                     ->where('status', 1)
                     ->latest()->get();
         $all_categories = $this->category->all();
+        $today = Carbon::now('Asia/Tokyo')->format('Y-m-d');
+        $time = Carbon::now('Asia/Tokyo')->format('H:i');
 
         return view('users.home')
                 ->with('all_posts', $all_posts)
                 ->with('users', $users)
-                ->with('all_categories', $all_categories);
+                ->with('all_categories', $all_categories)
+                ->with('today', $today)
+                ->with('time', $time);
     }
 
 
