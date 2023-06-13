@@ -18,7 +18,13 @@ class ProfileController extends Controller
 
     public function show($id){
         $user = $this->user->findOrFail($id);
-        $posts = Post::where('user_id', $id)->latest()->get();
+        $posts = Post::where('user_id', $id)
+                    ->Where(function ($query) {
+                        $query->where('role_id', 2)
+                        ->orWhere('status', 2);
+                })
+                ->orderBy('date')
+                ->get();
 
         return view('users.profile.show')
                 ->with('user', $user)

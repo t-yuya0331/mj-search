@@ -36,7 +36,7 @@ class HomeController extends Controller
         $users = $this->user->all();
         $all_posts = Post::where('role_id', 1)
                     ->where('status', 1)
-                    ->latest()->get();
+                    ->orderBy('date')->get();
         $all_categories = $this->category->all();
         $today = Carbon::now('Asia/Tokyo')->format('Y-m-d');
         $time = Carbon::now('Asia/Tokyo')->format('H:i');
