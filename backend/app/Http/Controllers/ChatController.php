@@ -10,12 +10,6 @@ use App\Events\MessageReceived;
 
 class ChatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     private $chat;
     private $user;
 
@@ -25,16 +19,6 @@ class ChatController extends Controller
         $this->user = $user;
     }
 
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function showChat($id){
         $chat_user = $this->user->findOrFail($id);
 
@@ -44,13 +28,6 @@ class ChatController extends Controller
                 ->with('chat_user' ,$chat_user)
                 ->with('messages', $messages);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
     public function getMessage($id){
         $receiver = $this->user->findOrFail($id);
@@ -87,45 +64,21 @@ class ChatController extends Controller
         return response()->json(['success' => true]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
+    // get chattedUser data
+    public function getChattedUser(){
+    $user = Auth::user();
 
+    $chattedUserIds = Chat::whereIn('sender', [$user->id])
+        ->orWhereIn('receiver', [$user->id])
+        ->pluck('sender')
+        ->merge(Chat::whereIn('receiver', [$user->id])
+            ->orWhereIn('sender', [$user->id])
+            ->pluck('receiver'))
+        ->unique();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chat $chat)
-    {
-        //
-    }
+    $chattedUsers = User::whereIn('id', $chattedUserIds)->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chat $chat)
-    {
-        //
-    }
+    return view('chats.chat_list')->with('chattedUsers', $chattedUsers);
+}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chat $chat)
-    {
-        //
-    }
 }

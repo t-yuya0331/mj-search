@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'chat', 'as' => 'chat.'], function(){
         Route::get('/{id}', [ChatController::class, 'showChat'])->name('showChat');
         Route::get('/{id}/messages', [ChatController::class, 'getMessages'])->name('messages');
+        Route::get('/', [ChatController::class, 'getChattedUser'])->name('getChattedUser');
         Route::post('/send',[ChatController::class, 'send'])->name('send');
         Route::post('/store',[ChatController::class, 'store'])->name('store');
     });
@@ -78,14 +79,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'nice', 'as' => 'nice.'], function(){
         Route::post('/{post_id}/store', [NiceController::class, 'store'])->name('store');
         Route::delete('/{id}/destroy', [NiceController::class, 'destroy'])->name('destroy');
-
     });
 
     #follow route
     Route::group(['prefix' => 'follow', 'as' => 'follow.'], function(){
         Route::post('/{id}/store', [FollowController::class, 'store'])->name('store');
         Route::delete('/{id}/destroy', [FollowController::class, 'destroy'])->name('destroy');
-
     });
 
     #admin route
@@ -115,6 +114,6 @@ Route::group(['middleware' => 'auth'], function(){
 
     });
 
-    // Broadcast
-    Broadcast::routes(['middleware' => ['auth:sanctum']]);
+
+    // Broadcast::routes(['middleware' => ['auth:sanctum']]);
 });

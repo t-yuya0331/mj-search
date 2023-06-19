@@ -46,14 +46,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Algoria setteing
+    // Algoria setting
     public function toSearchableArray()
     {
         $array = $this->toArray();
         unset($array['avatar']);
         return $array;
     }
-
 
     public function posts(){
         return $this->hasMany(Post::class);
@@ -71,31 +70,17 @@ class User extends Authenticatable
         return Chat::where('sender', Auth::user()->id)->where('receiver', Auth::user()->id)->exists();
     }
 
+    public function chats()
+    {
+        return $this->hasMany(Chat::class, 'sender', 'id')
+            ->orWhere(function ($query) {
+                $query->where('receiver', $this->id);
+            });
+    }
+
     public function nices(){
         return $this->hasMany(Nice::class);
     }
-    public function followers(){
-        return $this->hasMany(Follow::class, 'following_id');
-        #This code shows me(post user) who is following me
-    }
-
-    public function following(){
-        return $this->hasMany(Follow::class, 'follower_id');
-        #select * form follows where follower_id == own_id
-        #follower_id can show how many times I followed a user, this code shows who I am following.
-    }
-
-    public function isFollowed(){
-        return $this->followers()->where('follower_id', Auth::user()->id)->exists();
-    }
-
-    public function isFollowing(){
-        return $this->following()->where('following_id', Auth::user()->id)->exists();
-    }
-    public function checkUserHasFollowers($id){
-        return Follow::where('following_id', $id )->exists();
-    }
-
 
     public function countPosts($id){
         return $this->posts()->where('user_id', $id);

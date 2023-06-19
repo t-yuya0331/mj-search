@@ -25,6 +25,7 @@
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/search.css') }}" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/chat_list.css') }}" rel="stylesheet">
 
 
     <!-- font awesome -->
@@ -83,6 +84,8 @@
                                 <a href="{{ route('profile.show', Auth::user()->id) }}"     class="dropdown-item">
                                     <i class="fa-solid fa-circle-user">Profile</i>
                                 </a>
+                            {{-- chatlist --}}
+                                <a href="{{ route('chat.getChattedUser') }}">チャットリスト</a>
                             <!-- logout -->
                             <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
