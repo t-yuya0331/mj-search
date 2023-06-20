@@ -14,6 +14,7 @@ use App\Models\Nice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Broadcast;
 use App\Events\MessageReceived;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,12 +109,9 @@ Route::group(['middleware' => 'auth'], function(){
         [ App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('categories.edit');
         Route::patch('/categories/{id}/update',[ App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('categories.update');
 
-
-
-
-
     });
-
-
-    // Broadcast::routes(['middleware' => ['auth:sanctum']]);
 });
+
+// Google Login
+Route::get('/login/google', [LoginController::class,'redirectToGoogle'])->name('google.redirect');
+Route::get('/login/google/callback', [LoginController::class,'handleGoogleCallback'])->name('google.callback');

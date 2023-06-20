@@ -8,6 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -45,6 +46,16 @@
                             </div>
                         </div>
                     </form>
+                </div>
+
+                {{-- Google Login --}}
+                <div class="row justify-content-center mt-5">
+                    <p class=" text-center mt-5">下記のログイン方法もご利用できます</p>
+                    <div class="col-3 text-end">
+                        <a href="{{ route('google.redirect') }}">
+                            <img src="images/google.png" alt="google_image">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
