@@ -10,40 +10,29 @@
     <title>{{ config('app.name') }} | @yield('title')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/img.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/post_show.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/search.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/chat_list.css') }}" rel="stylesheet">
-
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div id="app">
-        <div class="nav_container shadow-sm border border-none">
+        <div class="nav_container shadow-sm border border-none" id="nav_container">
             <div class="row w-100">
                 @guest
                     <div class="col">
                         @if (Route::has('login'))
-                                <a class="nav-link " id="login" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        @endif
-                    </div>
-                    <div class="col">
-                        @if (Route::has('register'))
-                                <a class="nav-link" id="register" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link " id="login" class="btn" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @endif
                     </div>
                 @else
