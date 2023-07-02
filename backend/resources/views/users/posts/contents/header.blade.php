@@ -24,7 +24,7 @@
                 <div class="float-end text-center">
                     <div class="dropdown">
                         <button class="btn btn-sm shadow-none" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-ellipsis text-secondary"></i>
+                            <i class="fa-solid fa-thin fa-pencil" id="pen"></i>
                         </button>
                         <div class="dropdown-menu">
                             <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->id }}">編集する</button>
@@ -37,8 +37,8 @@
                     </div>
                     <div class="modal fade text-dark" id="editModal{{ $post->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
+                            <div class="modal-content" id="modal">
+                                <div class="modal-header p-0">
                                     <h5 class="modal-title" id="editModalLabel">投稿を編集する</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
@@ -65,35 +65,49 @@
                                         </div>
                                         <div class="mb-3">
                                             <div class="row">
-                                                <div class="col-auto">
+                                                <div class="col-6" >
                                                     <label for="date" class="form-label d-block fw-bold">
-                                                        <span class="text-muted fw-normal">日付を選択してください</span>
+                                                        <span class="text-muted fw-normal">日付</span>
                                                     </label>
                                                     <input type="date" name="date" value="{{ $post->date }}" min="{{ $today }}">
                                                 </div>
-                                                <div class="col-auto">
+                                                <div class="col-6">
                                                     <label for="time" class="form-label d-block fw-bold">
-                                                        <span class="text-muted fw-normal">時間を選択してください</span>
+                                                        <span class="text-muted fw-normal">時間</span>
                                                     </label>
                                                     <input type="time" name="time" value="{{ $post->time }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="location" class="form-label d-block fw-bold">
-                                                <span class="text-muted fw-normal">場所</span>
-                                            </label>
-                                            <input type="text" name="location" placeholder="お店の住所等" value="{{ $post->location }}">
+                                            <div class="row">
+                                                <div class="col-auto pe-0">
+                                                    <label for="location" class="form-label d-block fw-bold">
+                                                        <span class="text-muted fw-normal">場所:</span>
+                                                    </label>
+                                                </div>
+                                                <div class="col ps-3 text-start">
+                                                    <input type="text" name="location" placeholder="お店の住所等" value="{{ $post->location }}">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="number" class="form-label d-block fw-bold">
-                                                <span class="text-muted fw-normal">募集人数</span>
-                                            </label>
-                                            <input type="number" name="number" max="3" min="1" value="{{ $post->number }}">
+                                            <div class="row">
+                                                <div class="col-auto pe-0">
+                                                    <label for="number" class="form-label d-block fw-bold">
+                                                        <span class="text-muted fw-normal">募集人数:</span>
+                                                    </label>
+                                                </div>
+                                                <div class="col ps-3 text-start">
+                                                    <input type="number" name="number" max="3" min="1" value="{{ $post->number }}">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row mb-3">
                                             <div class="form-group">
-                                                <p class="control-label">募集対象</p>
+                                                <label for="number" class="form-label d-block fw-bold">
+                                                    <span class="text-muted fw-normal">募集対象</span>
+                                                </label>
                                                 <div class="form-check-inline">
                                                     <input type="radio" name="target" id="begginer" value="1" {{ $post->target == 1 ? 'checked' : '' }}>
                                                     <label for="begginer">初級</label>
@@ -117,7 +131,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-0">
                                             <label for="description" class="form-label fw-bold" ></label>
                                             <textarea name="description" id="description"  rows="3" class="form-control" rows="3">{{ $post->description }}</textarea>
                                             @error('description')
@@ -125,7 +139,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer p-0">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
                                         <button type="submit" class="btn btn-primary">保存する</button>
                                     </div>

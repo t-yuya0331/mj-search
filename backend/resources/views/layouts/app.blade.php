@@ -26,72 +26,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div id="app">
-        <div class="nav_container shadow-sm border border-none" id="nav_container">
-            <div class="row w-100">
-                @guest
-                    <div class="col">
-                        @if (Route::has('login'))
-                                <a class="nav-link " id="login" class="btn" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        @endif
-                    </div>
-                @else
-                    <div class="col d-block d-lg-none">
-                        <button class="btn btn-sm" type="button" data-bs-toggle="collapse" href="#collapseSearch" role="button" >
-                            <i class="fas fa-search" id="nav_search_icon"></i>
-                        </button>
-                    </div>
-                    <div class="collapse" id="collapseSearch">
-                        <div class="search-box" id="nav_search">
-                            <form action="{{ route('search') }}" method="get">
-                                @csrf
-                                <input type="text" name="search" class="form-element " placeholder="キーワード検索" id="nav_search_box" required>
-                                <button class="btn btn-sm btn-primary">検索</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <a href="{{ route('index') }}" id="home_icon" >
-                            <i class="fa-solid fa-house text-secpmdary icon"></i>
+<div id="app">
+    <div class="nav-area">
+        <nav class="navbar navbar-expand navbar-dark">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('index') }}" id="nav-item">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('post.create') }}" id="nav-item">募集</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('profile.show', Auth::user()->id) }}" class="nav-link" id="nav-item">
+                            <i class="fa-solid fa-circle-user" id="nav-icon"></i> Profile
                         </a>
-                    </div>
-                    <div class="col">
-                        <a href="{{ route('post.create') }}" id="create_icon" class="text-primary">
-                            <img src="../../images/nav_img.jpg" style="height:43px; width:43px;">
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('chat.getChattedUser') }}" class="nav-link" id="nav-item">
+                            <i class="fa-regular fa-message" id="nav-icon"></i> Chat
                         </a>
-                    </div>
-                    <div class="col">
-                        <button class="btn shadow-none nav-link" id="account-dropdown"  data-bs-toggle="dropdown">
-                            @if(Auth::user()->avatar)
-                                <img src="data:image/png;base64,{{ Auth::user()->avatar }}" alt="{{   Auth::user()->avatar }}" class="rounded-circle nav-avatar"  id="nav_user_avatar">
-                            @else
-                                <i class="fa-solid fa-circle-user nav-icon" id="nav_user_icon"></i>
-                            @endif
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end mt-5" aria-labelledby="navbarDropdown" id="nav_drop">
-                            <!-- profile -->
-                                <a href="{{ route('profile.show', Auth::user()->id) }}"     class="dropdown-item">
-                                    <i class="fa-solid fa-circle-user">Profile</i>
-                                </a>
-                            {{-- chatlist --}}
-                                <a href="{{ route('chat.getChattedUser') }}">チャットリスト</a>
-                            <!-- logout -->
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                <i class="fa-solid fa-right-from-bracket"></i> {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"     class="d-none">
-                                @csrf
-                            </form>
-                    </div>
-                @endif
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa-solid fa-right-from-bracket" id="nav-icon"></i> {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
             </div>
-        </div>
-
-        <main class="mt-3">
+        </nav>
+    </div>
+        <main class="">
             @yield('content')
         </main>
-    </div>
+</div>
 </body>
 </html>
