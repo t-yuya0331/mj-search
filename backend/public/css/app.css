@@ -11,6 +11,9 @@
 @import url(home/home.css);
 @import url(chat/chat_list.css);
 @import url(chat/chat.css);
+@import url(profile/profile.css);
+@import url(Post/create.css);
+@import url(chat/chat.css);
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;

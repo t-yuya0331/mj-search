@@ -3,8 +3,8 @@
 @section('title','Create Post')
 
 @section('content')
-<div class="create_container">
-    <div class="create_post w-50 mx-auto" >
+<div class="create-container pt-5">
+    <div class="create-post p-2 mx-auto" >
         @if(!Auth::user()->checkUserHasPost())
             <h3 class="text-center">メンバー募集をしよう！</h3>
         @endif
@@ -26,7 +26,7 @@
                     <p class="text-danger small">{{ $message }}</p>
                 @enderror
                 <p class="mb-0">
-                    <a data-bs-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseExample">
+                    <a data-bs-toggle="collapse" href="#collapseRule" aria-expanded="false" aria-controls="collapseExample" class="text-success">
                         用語の説明はこちら
                     </a>
                 </p>
@@ -39,15 +39,15 @@
             </div>
             <div class="mb-3">
                 <div class="row">
-                    <div class="col-auto">
+                    <div class="col-auto text-center" id="create-detail">
                         <label for="date" class="form-label d-block fw-bold">
-                            <span class="text-muted fw-normal">日付を選択してください</span>
+                            <span class="text-muted fw-normal text-start ps-2">日付を選択してください</span>
                         </label>
                         <input type="date" name="date" min="{{ $today }}">
                     </div>
-                    <div class="col-auto">
-                        <label for="time" class="form-label d-block fw-bold">
-                            <span class="text-muted fw-normal">時間を選択してください</span>
+                    <div class="col-auto text-center" id="create-detail">
+                        <label for="time" class="form-label d-block fw-bold ps-3">
+                            <span class="text-muted fw-normal"> 時間を選択してください</span>
                         </label>
                         <input type="time" name="time">
                     </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="row mb-3">
                 <div class="form-group">
-                    <p class="control-label">募集対象</p>
+                    <p class="control-label mb-0">募集対象</p>
                     <div class="form-check-inline">
                         <input type="radio" name="target" id="begginer" value="1">
                         <label for="begginer">初級</label>
@@ -91,7 +91,7 @@
                     @enderror
                 </div>
                 <p class="mb-0">
-                    <a data-bs-toggle="collapse" href="#collapseTarget" aria-expanded="false" aria-controls="collapseTarget">
+                    <a data-bs-toggle="collapse" href="#collapseTarget" aria-expanded="false" aria-controls="collapseTarget" class="text-success">
                         対象の目安はこちら
                     </a>
                 </p>

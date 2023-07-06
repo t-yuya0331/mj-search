@@ -23,8 +23,8 @@
             <div class="col p-0">
                 <div class="float-end text-center">
                     <div class="dropdown">
-                        <button class="btn btn-sm shadow-none" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-thin fa-pencil" id="pen"></i>
+                        <button class="btn btn-sm shadow-none" data-bs-toggle="dropdown" id="pen">
+                            <i class="fa-solid fa-thin fa-pencil" id="pen-icon"></i>
                         </button>
                         <div class="dropdown-menu">
                             <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal{{ $post->id }}">編集する</button>

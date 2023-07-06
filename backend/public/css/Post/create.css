@@ -1,0 +1,77 @@
+/* common */
+.create-container {
+    background-color: rgb(245, 233, 217);
+    min-height: 100vh;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.create-post {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    width: 360px;
+}
+.create-post h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333;
+}
+.create-post .form-label {
+    font-weight: bold;
+    color: #333333;
+}
+.create-post .text-muted {
+    color: #999999;
+}
+.create-post .form-check-input {
+    margin-right: 10px;
+}
+.create-post .collapse {
+    margin-top: 10px;
+}
+.create-post .rule {
+    margin-bottom: 10px;
+}
+.create-post .form-control {
+    resize: vertical;
+}
+.create-post .button {
+    margin-top: 20px;
+    text-align: center;
+}
+.create-post .btn-primary {
+    background-color: #3aca5b;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+.create-post .btn-primary:hover {
+    background-color: #3aca5b;
+}
+/* tablet */
+@media (min-width:768px) and (max-width:1020px) {
+.create-post {
+    width: 560px;
+}
+}
+/* pc */
+@media(min-width: 1020px) {
+.create-post {
+    width: 580px;
+}
+}
+/* display */
+@media(min-width:1500px){
+    .create-post {
+        width: 600px;
+    }
+}
+
+    /* only mobile screen  */
+@media(max-width:450px){
+#create-detail{
+    padding: 0;
+}
+}

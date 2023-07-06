@@ -1,4 +1,147 @@
+/* common */
 #chat_list_user_avatar{
     height: 36px;
     width: 36px;
+}
+#chat-list {
+    max-width: 320px;
+    margin: 0 auto;
+}
+#chat-list .card-header {
+    background-color: #02ba21;
+}
+#chat-list .card-title {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+#chat-list .list-group-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    transition: background-color 0.2s;
+}
+#chat-list .list-group-item:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+#chat-list .list-group-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+#chat-list .list-group-item a img {
+    width: 33px;
+    height: 33px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+#chat-list .list-group-item a i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+#chat-list .list-group-item span {
+    font-weight: bold;
+}
+#chat-list .nav-avatar {
+    object-fit: cover;
+}
+#chat-icon{
+    font-size: 33px;
+}
+
+/* tablet */
+@media (min-width:768px) and (max-width:1020px) {
+#chat-icon{
+    font-size: 53px;
+}
+#chat_list_user_avatar{
+    height: 36px;
+    width: 36px;
+}
+#chat-list {
+    max-width: 480px;
+    margin: 0 auto;
+}
+#chat-list .card-title {
+    font-size: 1.2rem;
+}
+#chat-list .list-group-item a img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+#chat-list .list-group-item a{
+    font-size: 18px;
+}
+#chat-list .list-group-item a i {
+    font-size: 38px;
+    margin-right: 10px;
+}
+}
+
+/* pc */
+@media(min-width: 1020px) {
+#chat-icon{
+    font-size: 53px;
+}
+#chat_list_user_avatar{
+    height: 36px;
+    width: 36px;
+}
+#chat-list {
+    max-width: 630px;
+    margin: 0 auto;
+}
+#chat-list .card-title {
+    font-size: 1.2rem;
+}
+#chat-list .list-group-item a img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+#chat-list .list-group-item a{
+    font-size: 18px;
+}
+#chat-list .list-group-item a i {
+    font-size: 38px;
+    margin-right: 10px;
+}
+}
+
+/* display */
+@media(min-width:1500px){
+#chat-icon{
+    font-size: 53px;
+}
+#chat_list_user_avatar{
+    height: 36px;
+    width: 36px;
+}
+#chat-list {
+    max-width: 630px;
+    margin: 0 auto;
+}
+#chat-list .card-title {
+    font-size: 1.2rem;
+}
+#chat-list .list-group-item a img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+#chat-list .list-group-item a{
+    font-size: 18px;
+}
+#chat-list .list-group-item a i {
+    font-size: 38px;
+    margin-right: 10px;
+}
 }
