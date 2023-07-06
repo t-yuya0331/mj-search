@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
