@@ -3,9 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +17,15 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'user_id' => User::factory(),
+            'target' => $this->faker->numberBetween(1, 4),
+            'description' => $this->faker->paragraph,
+            'date' => $this->faker->date(),
+            'time' => $this->faker->time(),
+            'number' => $this->faker->phoneNumber,
+            'location' => $this->faker->address,
+            'role_id' => $this->faker->numberBetween(1),
+            'status' => $this->faker->numberBetween(1),
         ];
     }
 
@@ -30,7 +38,6 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'email_verified_at' => null,
             ];
         });
     }

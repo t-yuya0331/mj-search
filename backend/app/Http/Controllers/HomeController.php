@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function index(){
         // check the date and time are past or not
-        $currentDateTime = Carbon::now('Asia/Tokyo');
+        $currentDateTime = Carbon::now();
         Post::where('date', '<', $currentDateTime->format('Y-m-d'))
             ->orWhere(function ($query) use ($currentDateTime) {
                 $query->where('date', '=', $currentDateTime->format('Y-m-d'))
@@ -36,10 +36,11 @@ class HomeController extends Controller
         $users = $this->user->all();
         $all_posts = Post::where('role_id', 1)
                     ->where('status', 1)
-                    ->orderBy('date')->get();
+                    ->orderBy('date')
+                    ->paginate(5);
         $all_categories = $this->category->all();
-        $today = Carbon::now('Asia/Tokyo')->format('Y-m-d');
-        $time = Carbon::now('Asia/Tokyo')->format('H:i');
+        $today = Carbon::now()->format('Y-m-d');
+        $time = Carbon::now()->format('H:i');
 
         return view('users.home')
                 ->with('all_posts', $all_posts)

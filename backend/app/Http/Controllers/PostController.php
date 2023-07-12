@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\Nice;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -21,8 +20,8 @@ class PostController extends Controller
 
     public function create(){
         $all_categories = $this->category->all();
-        $today = Carbon::now('Asia/Tokyo')->format('Y-m-d');
-        $time = Carbon::now('Asia/Tokyo')->format('H:i');
+        $today = Carbon::now()->format('Y-m-d');
+        $time = Carbon::now()->format('H:i');
 
         return view('users.posts.create')
                 ->with('all_categories',$all_categories)
@@ -66,24 +65,6 @@ class PostController extends Controller
         return view('users.posts.show')->with('post', $post);
     }
 
-    public function edit($id){
-        $post = $this->post->findOrFail($id);
-
-        if(Auth::user()->id !== $post->user->id):
-            return redirect()->route('index');
-        endif;
-
-        $all_categories = $this->category->all();
-        foreach($post->categoryPost as $category_post):
-            $selected_categories[] = $category_post->category_id;
-        endforeach;
-
-        return view('users.posts.edit')
-                ->with('post', $post )
-                ->with('all_categories', $all_categories)
-                ->with('selected_categories');
-    }
-
     public function update(Request $request,$id){
         $request->validate([
             'description'   => 'max:500',
@@ -113,14 +94,6 @@ class PostController extends Controller
         $post->categoryPost()->createMany($category_post);
 
             return redirect()->back();
-    }
-
-    public function destroy($id){
-        $post = $this->post->findOrFail($id);
-        $this->deleteImage($post->image);
-        $this->post->destroy($id);
-
-        return redirect()->route('index');
     }
 
     public function createPost(){

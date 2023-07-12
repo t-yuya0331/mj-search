@@ -29,6 +29,8 @@
                             @include('users.posts.contents.body')
                         </div>
                     @endforeach
+                @else
+                    <h3 class="text-center text-primary">投稿はありません</h3>
                 @endif
             </div>
             <div class="col mt-5 d-md-none d-xl-block" id="suggestion">
@@ -45,4 +47,5 @@
         </div>
     </div>
 </div>
+{!! $all_posts->links() !!}
 @endsection
