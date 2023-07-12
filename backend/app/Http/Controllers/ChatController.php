@@ -22,38 +22,20 @@ class ChatController extends Controller
     public function showChat($id){
         $chat_user = $this->user->findOrFail($id);
 
-        $messages = Chat::where('sender', $chat_user->id)->where('receiver', Auth::user()->id)->orWhere('receiver', $chat_user->id)->where('sender', Auth::user()->id)->get();
+        $messages = Chat::where('sender', $chat_user->id)
+                        ->where('receiver', Auth::user()->id)
+                        ->orWhere('receiver', $chat_user->id)
+                        ->where('sender', Auth::user()->id)
+                        ->orderBy('created_at', 'asc')
+                        ->get();
 
         return view('chats.show')
                 ->with('chat_user' ,$chat_user)
                 ->with('messages', $messages);
-    }
+}
 
-    public function getMessage($id){
-        $receiver = $this->user->findOrFail($id);
-        $messages = Message::where(function($query) use ($id){
-            $query->where('sender', Auth::user()->id)->where('receiver', $id);
-        })->orWhere(function($query) use ($id) {
-            $query->where('sender', $id)->where('receiver', Auth::user()->id);
-        })->get();
 
-        return response()->json([
-            'messages' => $messages
-        ]);
-    }
-
-    public function send(Request $request)
-    {
-        $this->chat->sender = $request->sender;
-        $this->chat->receiver = $request->receiver;
-        $this->chat->message = $request->message;
-
-        $this->chat->save();
-        return redirect()->back();
-    }
-
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $this->chat->sender = $request->sender;
         $this->chat->receiver = $request->receiver;
         $this->chat->message = $request->message;
@@ -62,23 +44,21 @@ class ChatController extends Controller
         event(new MessageReceived($request->all()));
 
         return response()->json(['success' => true]);
-    }
+}
 
-    // get chattedUser data
     public function getChattedUser(){
-    $user = Auth::user();
+        $user = Auth::user();
+        $chattedUserIds = Chat::whereIn('sender', [$user->id])
+            ->orWhereIn('receiver', [$user->id])
+            ->pluck('sender')
+            ->merge(Chat::whereIn('receiver', [$user->id])
+                ->orWhereIn('sender', [$user->id])
+                ->pluck('receiver'))
+            ->unique();
 
-    $chattedUserIds = Chat::whereIn('sender', [$user->id])
-        ->orWhereIn('receiver', [$user->id])
-        ->pluck('sender')
-        ->merge(Chat::whereIn('receiver', [$user->id])
-            ->orWhereIn('sender', [$user->id])
-            ->pluck('receiver'))
-        ->unique();
+        $chattedUsers = User::whereIn('id', $chattedUserIds)->get();
 
-    $chattedUsers = User::whereIn('id', $chattedUserIds)->get();
-
-    return view('chats.chat_list')->with('chattedUsers', $chattedUsers);
+        return view('chats.chat_list')->with('chattedUsers', $chattedUsers);
 }
 
 }

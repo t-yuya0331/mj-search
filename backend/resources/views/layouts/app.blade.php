@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
 
     <!-- Fonts -->
@@ -46,6 +47,13 @@
                             <i class="fa-regular fa-message" id="nav-icon"></i> Chat
                         </a>
                     </li>
+                    @if(Auth::user()->role_id == 2)
+                        <li class="nav-item">
+                            <a href="{{ route('admin.showCategory') }}"    class="nav-link" id="nav-item">
+                                <p>Category</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

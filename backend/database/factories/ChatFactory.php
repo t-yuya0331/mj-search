@@ -4,8 +4,10 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\Chat;
+use App\Models\User;
 
-class UserFactory extends Factory
+class ChatFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +17,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'sender' => User::factory(),
+            'receiver' => User::factory(),
+            'message' => $this->faker->sentence,
+            'created_at' => $this->faker->dateTime,
         ];
     }
 
@@ -30,7 +33,6 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'email_verified_at' => null,
             ];
         });
     }

@@ -23,7 +23,9 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('status')
                     ->comment('1 beginner 2 intermediate 3 advanced ')
                     ->nullable();
-
+            $table->unsignedBigInteger('role_id')
+                    ->comment('1 guest 2 admin')
+                    ->default('1');
             $table->timestamps();
         });
     }
