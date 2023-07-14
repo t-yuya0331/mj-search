@@ -9,7 +9,6 @@ use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Category;
 
-
 class HomeController extends Controller
 {
     private $post;
@@ -49,7 +48,6 @@ class HomeController extends Controller
                 ->with('today', $today)
                 ->with('time', $time);
     }
-
 
     public function search(Request $request){
         $keyword = $request->input('search');

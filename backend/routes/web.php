@@ -5,13 +5,8 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\NiceController;
-use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\CategoryController;
-use App\Models\Nice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Broadcast;
 use App\Events\MessageReceived;
@@ -30,9 +25,6 @@ use App\Http\Controllers\Auth\LoginController;
 
 
 Auth::routes();
-
-
-
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/',[HomeController::class,'index'])->name('index');
