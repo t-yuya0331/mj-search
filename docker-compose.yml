@@ -35,6 +35,12 @@ services:
       - ${PHP_MYADMIN_PORT}:80
     depends_on:
       - db
+  
+  # mail hog
+  # mailhog:
+  #   image: mailhog/mailhog
+  #   ports:
+  #     - 8026:8025
 
 volumes:
   db-store:
