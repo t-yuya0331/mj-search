@@ -17,15 +17,17 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => function () {
+                return User::factory()->create()->id;
+            },
             'target' => $this->faker->numberBetween(1, 4),
             'description' => $this->faker->paragraph,
-            'date' => $this->faker->date(),
-            'time' => $this->faker->time(),
-            'number' => $this->faker->phoneNumber,
+            'date' => $this->faker->date,
+            'time' => $this->faker->time,
+            'number' => $this->faker->randomDigit,
             'location' => $this->faker->address,
-            'role_id' => $this->faker->numberBetween(1),
-            'status' => $this->faker->numberBetween(1),
+            'role_id' => $this->faker->numberBetween(1, 2),
+            'status' => $this->faker->numberBetween(1, 2),
         ];
     }
 

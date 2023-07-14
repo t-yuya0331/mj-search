@@ -23,6 +23,7 @@ class Post extends Model
         'status'
     ];
 
+
     // Algoria search function
     public function toSearchableArray(){
         $array = $this->toArray();

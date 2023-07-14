@@ -6,7 +6,10 @@
 <div class="create-container pt-5">
     <div class="create-post p-2 mx-auto" >
         @if(!Auth::user()->checkUserHasPost())
-            <h3 class="text-center">メンバー募集をしよう！</h3>
+            <h3 class="text-center">
+                <img src="../images/post-img.jpg" id="post-img" >
+                メンバー募集をしよう！
+            </h3>
         @endif
         <form action="{{ route('post.store') }}" method="post">
             @csrf
@@ -105,9 +108,9 @@
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label fw-bold" ></label>
-                <textarea name="description" id="description"  rows="3" class="form-control" placeholder="上記以外のルールの詳細や募集する方へのメッセージがあれば記載してください"></textarea>
+                <textarea name="description" id="description"  rows="3" class="form-control" style="resize: none;" placeholder="上記以外のルールの詳細や募集する方へのメッセージがあれば記載してください"></textarea>
                 @error('description')
-                    <p class="text-danger small">{{ $message }}</p>
+                    <p class="text-danger small" >{{ $message }}</p>
                 @enderror
             </div>
             <div class="button text-center">
