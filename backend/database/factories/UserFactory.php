@@ -15,9 +15,13 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'avatar' => null,
+            'password' => bcrypt('password'), // You can update this with your desired default password
+            'introduction' => $this->faker->sentence,
+            'status' => $this->faker->numberBetween(1, 3),
+            'role_id' => $this->faker->numberBetween(1, 2),
         ];
     }
 

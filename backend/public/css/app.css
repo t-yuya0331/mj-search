@@ -14,6 +14,7 @@
 @import url(profile/profile.css);
 @import url(Post/create.css);
 @import url(chat/chat.css);
+@import url(Post/search.css);
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
