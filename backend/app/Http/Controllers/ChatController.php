@@ -34,7 +34,6 @@ class ChatController extends Controller
                 ->with('messages', $messages);
 }
 
-
     public function store(Request $request){
         $this->chat->sender = $request->sender;
         $this->chat->receiver = $request->receiver;
@@ -60,5 +59,4 @@ class ChatController extends Controller
 
         return view('chats.chat_list')->with('chattedUsers', $chattedUsers);
 }
-
 }
